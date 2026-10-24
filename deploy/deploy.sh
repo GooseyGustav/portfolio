@@ -5,5 +5,6 @@ cd "$(dirname "$0")/.."
 git pull --ff-only || true
 npm ci
 npm run build
-rsync -a --delete dist/ /var/www/portfolio/
+find /var/www/portfolio -mindepth 1 -delete
+cp -r dist/. /var/www/portfolio/
 echo "Published to https://portfolio.asifthatworks.com"
