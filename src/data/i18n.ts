@@ -27,6 +27,7 @@ export const ui = {
     contactTitle: ['Let’s build something', 'that works.'],
     contactText: 'Open to working student roles, internships and graduate positions in AI, Web3 and automation.',
     theme: 'Color theme',
+    mode: 'Switch light / dark mode',
     lang: 'Deutsch',
   },
   de: {
@@ -53,6 +54,7 @@ export const ui = {
     contactTitle: ['Lass uns etwas bauen,', 'das funktioniert.'],
     contactText: 'Offen für Werkstudentenstellen, Praktika und Einstiegspositionen in KI, Web3 und Automatisierung.',
     theme: 'Farbschema',
+    mode: 'Hell / Dunkel umschalten',
     lang: 'English',
   },
 } as const;

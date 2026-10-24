@@ -29,11 +29,17 @@ const other = lang === 'en' ? 'de' : 'en';
         try { id = localStorage.getItem('pal') || 'ember'; } catch (e) {}
         if (!palettes[id]) id = 'ember';
         const root = document.documentElement;
+        let mode = null;
+        try { mode = localStorage.getItem('mode'); } catch (e) {}
+        if (mode === 'light' || mode === 'dark') root.dataset.theme = mode;
+        else delete root.dataset.theme;
         const t = root.dataset.theme;
         const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
         const v = palettes[id][dark ? 'dark' : 'light'];
         K.forEach((k, i) => root.style.setProperty('--' + k, v[i]));
         document.querySelectorAll('.sw').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pal === id)));
+        const m = document.getElementById('mode');
+        if (m) { m.setAttribute('aria-pressed', String(dark)); m.dataset.dark = String(dark); }
         const n = document.getElementById('pal-name');
         if (n) n.textContent = palettes[id].name;
       };
@@ -64,6 +70,11 @@ const other = lang === 'en' ? 'de' : 'en';
       <slot />
     </main>
     <div class="picker" role="group" aria-label={t.theme} transition:persist>
+      <button class="mode" id="mode" aria-label={t.mode} title={t.mode} aria-pressed="false">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" /><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" /></svg>
+      </button>
+      <span class="divider" aria-hidden="true"></span>
       <span class="label" id="pal-name">Ember</span>
       {Object.entries(palettes).map(([id, p]) => (
         <button class="sw" data-pal={id} title={p.name} aria-label={p.name} aria-pressed={id === 'ember' ? 'true' : 'false'} style={`--a:${p.dark[0]};--b:${p.dark[5]}`}></button>

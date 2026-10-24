@@ -94,6 +94,12 @@ footer p { color: var(--muted); max-width: 60ch; }
 
 .picker { position: fixed; z-index: 30; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow); }
 .picker .label { padding: 0 4px; }
+.mode { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; padding: 0; transition: transform .3s, background-color .5s; }
+.mode:hover { transform: rotate(-20deg); }
+.mode svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; grid-area: 1 / 1; transition: opacity .3s, transform .4s; }
+.mode .moon { fill: currentColor; stroke: none; }
+.mode[data-dark="true"] .sun, .mode:not([data-dark="true"]) .moon { opacity: 0; transform: scale(.5) rotate(-90deg); }
+.picker .divider { width: 1px; height: 20px; background: var(--line); }
 .sw { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--line); cursor: pointer; padding: 0; background: linear-gradient(135deg, var(--a) 0 50%, var(--b) 50% 100%); transition: transform .2s; }
 .sw[aria-pressed="true"] { border-color: var(--fg); transform: scale(1.12); }
 

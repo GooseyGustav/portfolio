@@ -20,6 +20,14 @@ document.querySelectorAll<HTMLButtonElement>('.sw').forEach((b) =>
     (window as any).__applyPal();
   }),
 );
+document.getElementById('mode')?.addEventListener('click', (e) => {
+  const btn = e.currentTarget as HTMLElement;
+  const next = btn.dataset.dark === 'true' ? 'light' : 'dark';
+  try { localStorage.setItem('mode', next); } catch (err) {}
+  const apply = () => (window as any).__applyPal();
+  if ((document as any).startViewTransition && !reduce) (document as any).startViewTransition(apply);
+  else apply();
+});
 (window as any).__applyPal();
 
 // Remember an explicit language choice so the root redirect respects it
