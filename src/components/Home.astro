@@ -1,0 +1,63 @@
+---
+import { projects, type Lang } from '../data/projects';
+import { ui } from '../data/i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const work = projects.filter((p) => p.kind === 'work');
+const study = projects.filter((p) => p.kind === 'study');
+const skills = ['Java', 'Python', 'JavaScript', 'Node.js', 'Swift', 'MongoDB', 'SQLite', 'Linux', 'AWS', 'LLM agents', 'TCP / Networking'];
+---
+<div class="wrap hero">
+  <div class="prompt"><span>$</span> whoami</div>
+  <h1 data-depth="-0.08">{t.heroLead}<br />{t.heroEnd} <em>{t.heroWink}</em></h1>
+  <p>{t.heroText}</p>
+  <div class="chips">{skills.map((s) => <span class="chip">{s}</span>)}</div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sechead"><h2>{t.work}</h2><span class="label">{t.workHint}</span></div>
+    <div class="work">
+      {work.map((p) => (
+        <a class={`card${p.featured && p.slug === 'jarvi' ? ' big' : ''}`} href={`/${lang}/projects/${p.slug}/`} transition:name={`card-${p.slug}`}>
+          <div class="meta"><span class="label">{p.label[lang]} · {p.period}</span><span class="open">{t.open} →</span></div>
+          <div><h3 transition:name={`title-${p.slug}`}>{p.title}</h3><p>{p.summary[lang]}</p></div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="studies">
+  <div class="wrap">
+    <div class="sechead"><h2>{t.studies}</h2><span class="label">{t.studiesHint}</span></div>
+    <div class="track">
+      {study.map((p) => {
+        const hasPage = p.points[lang].length > 0;
+        const Tag = hasPage ? 'a' : 'div';
+        return (
+          <Tag class="step" href={hasPage ? `/${lang}/projects/${p.slug}/` : undefined}>
+            <div class="row"><span class="label">{p.label[lang]} · {p.period}</span>{p.team && <span class="badge">{t.team(p.team)}</span>}</div>
+            <h3 transition:name={hasPage ? `title-${p.slug}` : undefined}>{p.title}{hasPage && ' →'}</h3>
+            <p>{p.summary[lang]}</p>
+            <div class="tags">{p.stack.map((s) => <span>{s}</span>)}</div>
+          </Tag>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="label">{t.nav.contact}</span>
+    <h2>{t.contactTitle[0]}<br />{t.contactTitle[1]}</h2>
+    <p>{t.contactText}</p>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/GooseyGustav">github.com/GooseyGustav</a>
+      <a class="btn" href="https://asifthatworks.com">asifthatworks.com</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import Home from '../../components/Home.astro';
+import type { Lang } from '../../data/projects';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'de' } }];
+}
+const lang = Astro.params.lang as Lang;
+const alt = `/${lang === 'en' ? 'de' : 'en'}/`;
+---
+<Base lang={lang} alt={alt}><Home lang={lang} /></Base>

@@ -1,0 +1,25 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ky Anh · Portfolio</title>
+    <link rel="alternate" hreflang="en" href="/en/" />
+    <link rel="alternate" hreflang="de" href="/de/" />
+    <script is:inline>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('lang'); } catch (e) {}
+        var langs = saved ? [saved] : (navigator.languages || [navigator.language || 'en']);
+        var de = langs.some(function (l) { return /^de/i.test(l); });
+        location.replace(de ? '/de/' : '/en/');
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
+  </head>
+  <body style="background:#0c0e1c;color:#e8eaf6;font-family:system-ui,sans-serif">
+    <p style="padding:24px"><a href="/en/" style="color:#ff8a3d">English</a> · <a href="/de/" style="color:#ff8a3d">Deutsch</a></p>
+  </body>
+</html>

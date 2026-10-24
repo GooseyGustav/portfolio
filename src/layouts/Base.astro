@@ -1,0 +1,76 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import { ui } from '../data/i18n';
+import type { Lang } from '../data/projects';
+import { K, palettes } from '../scripts/palettes';
+
+interface Props { lang: Lang; title?: string; description?: string; alt: string }
+const { lang, title, description, alt } = Astro.props;
+const t = ui[lang];
+const other = lang === 'en' ? 'de' : 'en';
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title ?? t.metaTitle}</title>
+    <meta name="description" content={description ?? t.metaDesc} />
+    <link rel="alternate" hreflang={other} href={alt} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <script is:inline define:vars={{ K, palettes }}>
+      window.__pal = { K, palettes };
+      window.__applyPal = () => {
+        let id = 'ember';
+        try { id = localStorage.getItem('pal') || 'ember'; } catch (e) {}
+        if (!palettes[id]) id = 'ember';
+        const root = document.documentElement;
+        const t = root.dataset.theme;
+        const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        const v = palettes[id][dark ? 'dark' : 'light'];
+        K.forEach((k, i) => root.style.setProperty('--' + k, v[i]));
+        document.querySelectorAll('.sw').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pal === id)));
+        const n = document.getElementById('pal-name');
+        if (n) n.textContent = palettes[id].name;
+      };
+      window.__applyPal();
+      document.addEventListener('astro:after-swap', window.__applyPal);
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', window.__applyPal);
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="planes" aria-hidden="true" transition:persist>
+      <div class="grid" data-depth="0.15"></div>
+      <div class="orb a" data-depth="0.35"></div>
+      <div class="orb b" data-depth="0.5"></div>
+    </div>
+    <main>
+      <header class="top">
+        <div class="wrap">
+          <a class="brand" href={`/${lang}/`}>portfolio<b>.asifthatworks</b>.com</a>
+          <nav>
+            <a href={`/${lang}/#work`}>{t.nav.work}</a>
+            <a href={`/${lang}/#studies`}>{t.nav.studies}</a>
+            <a href={`/${lang}/#contact`}>{t.nav.contact}</a>
+            <a class="langswitch" href={alt} hreflang={other} data-lang={other}>{t.lang}</a>
+          </nav>
+        </div>
+      </header>
+      <slot />
+    </main>
+    <div class="picker" role="group" aria-label={t.theme} transition:persist>
+      <span class="label" id="pal-name">Ember</span>
+      {Object.entries(palettes).map(([id, p]) => (
+        <button class="sw" data-pal={id} title={p.name} aria-label={p.name} aria-pressed={id === 'ember' ? 'true' : 'false'} style={`--a:${p.dark[0]};--b:${p.dark[5]}`}></button>
+      ))}
+    </div>
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

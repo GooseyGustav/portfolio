@@ -1,0 +1,34 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { projects, type Lang } from '../../../data/projects';
+import { ui } from '../../../data/i18n';
+
+export function getStaticPaths() {
+  return (['en', 'de'] as Lang[]).flatMap((lang) =>
+    projects.filter((p) => p.points[lang].length > 0).map((p) => ({ params: { lang, slug: p.slug } })),
+  );
+}
+const lang = Astro.params.lang as Lang;
+const p = projects.find((x) => x.slug === Astro.params.slug)!;
+const t = ui[lang];
+const other = lang === 'en' ? 'de' : 'en';
+const back = `/${lang}/#${p.kind === 'work' ? 'work' : 'studies'}`;
+---
+<Base lang={lang} alt={`/${other}/projects/${p.slug}/`} title={`${p.title} · ${t.metaTitle}`} description={p.summary[lang]}>
+  <article class="wrap case">
+    <div class="bar"><span class="label">{p.label[lang]}{p.team ? ` · ${t.team(p.team)}` : ''}</span><a class="btn" href={back}>← {t.back}</a></div>
+    <div class="casehead" transition:name={p.kind === 'work' ? `card-${p.slug}` : undefined}>
+      <h1 transition:name={`title-${p.slug}`}>{p.title}</h1>
+      <p class="lede">{p.summary[lang]}</p>
+      <div class="facts">
+        <div><span class="label">{t.role}</span><b>{p.role[lang]}</b></div>
+        <div><span class="label">{t.period}</span><b>{p.period}</b></div>
+        <div><span class="label">{t.stack}</span><b>{p.stack.join(', ')}</b></div>
+        <div><span class="label">{t.links}</span><b>
+          {p.repo && <a href={p.repo}>{t.code}</a>}{p.repo && p.live && ' · '}{p.live && <a href={p.live}>{t.live}</a>}{!p.repo && !p.live && '—'}
+        </b></div>
+      </div>
+    </div>
+    <ul class="points">{p.points[lang].map((pt) => <li>{pt}</li>)}</ul>
+  </article>
+</Base>
