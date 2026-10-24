@@ -5,3 +5,4 @@ Personal portfolio built with Astro, Lenis and GSAP. English and German, with th
 - `npm run dev` to work locally, `npm run build` to build into `dist/`.
 - Project content lives in `src/data/projects.ts`, interface text in `src/data/i18n.ts`.
 - Server: one-time `sudo bash deploy/setup-server.sh`, then `bash deploy/deploy.sh` for every update.
+- `sudo bash deploy/close-app-ports.sh` blocks direct internet access to ports 3000 and 3002 (nginx still works).
