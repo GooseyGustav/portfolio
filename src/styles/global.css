@@ -46,6 +46,8 @@ nav a:hover { color: var(--fg); }
 .hero h1 { font-size: clamp(42px, 8vw, 108px); font-weight: 700; letter-spacing: -.03em; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero p { max-width: 60ch; color: var(--muted); font-size: 18px; margin: 28px 0 0; }
+.hero p .line { display: block; }
+.hero p .line + .line { margin-top: 10px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
 .chip { font-family: var(--mono); font-size: 12px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
 
