@@ -25,7 +25,7 @@ const back = `/${lang}/#${p.kind === 'work' ? 'work' : 'studies'}`;
         <div><span class="label">{t.period}</span><b>{p.period}</b></div>
         <div><span class="label">{t.stack}</span><b>{p.stack.join(', ')}</b></div>
         <div><span class="label">{t.links}</span><b>
-          {p.repo && <a href={p.repo}>{t.code}</a>}{p.repo && p.live && ' · '}{p.live && <a href={p.live}>{t.live}</a>}{!p.repo && !p.live && '—'}
+          {p.repo && <a href={p.repo}>{t.code}</a>}{p.privateRepo && <span>{t.private}</span>}{(p.repo || p.privateRepo) && p.live && ' · '}{p.live && <a href={p.live}>{t.live}</a>}{!p.repo && !p.privateRepo && !p.live && '—'}
         </b></div>
       </div>
     </div>

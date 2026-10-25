@@ -13,6 +13,7 @@ export interface Project {
   points: Record<Lang, string[]>;
   stack: string[];
   repo?: string;
+  privateRepo?: boolean;
   live?: string;
   featured?: boolean;
 }
@@ -27,25 +28,29 @@ export const projects: Project[] = [
     label: { en: 'Personal project', de: 'Eigenes Projekt' },
     role: { en: 'Solo developer', de: 'Solo-Entwickler' },
     summary: {
-      en: 'A multi-agent AI assistant that plans your calendar, chases your tasks and remembers context across conversations.',
-      de: 'Ein Multi-Agenten-KI-Assistent, der deinen Kalender plant, Aufgaben nachverfolgt und sich Kontext über Gespräche hinweg merkt.',
+      en: 'A multi-agent AI assistant that lives in your chats: it plans your calendar, chases your tasks and remembers what matters, on Telegram, WhatsApp, Instagram and Messenger.',
+      de: 'Ein Multi-Agenten-KI-Assistent, der in deinen Chats lebt: Er plant deinen Kalender, verfolgt deine Aufgaben und merkt sich, was wichtig ist, auf Telegram, WhatsApp, Instagram und Messenger.',
     },
     points: {
       en: [
-        'JARVIS orchestrates specialised agents: Grim for calendar and time blocking, Murphy for tasks, ForeverBrain for long-term memory.',
-        'Node.js and Express backend with OpenAI and Gemini models, Google Calendar integration and Supabase for storage.',
-        'Telegram bot as the main interface, plus webhooks that connect FatCat Pomodoro and other devices.',
-        'Self-hosted on my own VPS with nginx, pm2 and Let’s Encrypt, tested with a Jest suite.',
+        'LangGraph state graph: a supervisor and plan router hand each request to specialised agents, and a synthesizer merges their answers. Graph state is checkpointed in MongoDB.',
+        'Agents: Jarvi orchestrates, Grim handles the calendar and time blocking, Murphy the tasks, ForeverBrain is the long-term memory (RAG with embeddings and temporal recall), and Vex logs where Jarvi got stuck.',
+        'An intent router and a validator check every request before any tool runs. Jarvi also exposes its tools as an MCP server.',
+        'One adapter per channel: Telegram via webhooks, the WhatsApp Cloud API, and the Meta Graph API for Instagram DMs and Messenger, plus a web dashboard.',
+        'OpenAI GPT-4o mini for reasoning, embeddings for memory and Whisper for voice messages. Google Calendar and Tasks, Stripe subscriptions, push notifications and proactive cron nudges.',
+        'Self-hosted on my own VPS behind nginx with pm2 and Let\u2019s Encrypt, hardened with helmet, rate limiting and JWT, and covered by around 450 Jest test files.',
       ],
       de: [
-        'JARVIS koordiniert spezialisierte Agenten: Grim für Kalender und Zeitblöcke, Murphy für Aufgaben, ForeverBrain als Langzeitgedächtnis.',
-        'Node.js- und Express-Backend mit OpenAI- und Gemini-Modellen, Google-Calendar-Anbindung und Supabase als Datenbank.',
-        'Telegram-Bot als Hauptoberfläche, dazu Webhooks, die FatCat Pomodoro und weitere Geräte anbinden.',
-        'Selbst gehostet auf meinem eigenen VPS mit nginx, pm2 und Let’s Encrypt, abgesichert durch eine Jest-Testsuite.',
+        'LangGraph-Zustandsgraph: Ein Supervisor und ein Plan-Router geben jede Anfrage an spezialisierte Agenten weiter, ein Synthesizer führt die Antworten zusammen. Der Zustand wird in MongoDB gespeichert.',
+        'Agenten: Jarvi orchestriert, Grim kümmert sich um Kalender und Zeitblöcke, Murphy um Aufgaben, ForeverBrain ist das Langzeitgedächtnis (RAG mit Embeddings und zeitlichem Abruf) und Vex protokolliert, wo Jarvi hängen geblieben ist.',
+        'Ein Intent-Router und ein Validator prüfen jede Anfrage, bevor ein Tool läuft. Jarvi stellt seine Tools außerdem als MCP-Server bereit.',
+        'Ein Adapter pro Kanal: Telegram über Webhooks, die WhatsApp Cloud API und die Meta Graph API für Instagram-DMs und Messenger, dazu ein Web-Dashboard.',
+        'OpenAI GPT-4o mini fürs Denken, Embeddings fürs Gedächtnis und Whisper für Sprachnachrichten. Google Calendar und Tasks, Stripe-Abos, Push-Benachrichtigungen und proaktive Erinnerungen per Cron.',
+        'Selbst gehostet auf meinem eigenen VPS hinter nginx mit pm2 und Let\u2019s Encrypt, abgesichert mit helmet, Rate Limiting und JWT und durch rund 450 Jest-Testdateien getestet.',
       ],
     },
-    stack: ['Node.js', 'Express', 'OpenAI', 'Gemini', 'Supabase', 'Google APIs', 'Telegram Bot API', 'nginx'],
-    repo: 'https://github.com/GooseyGustav/asifthatworks_backend',
+    stack: ['Node.js', 'Express', 'LangGraph', 'OpenAI', 'MongoDB', 'Telegram', 'WhatsApp Cloud API', 'Meta Graph API', 'Google APIs', 'Stripe', 'nginx'],
+    privateRepo: true,
     live: 'https://asifthatworks.com',
   },
   {
