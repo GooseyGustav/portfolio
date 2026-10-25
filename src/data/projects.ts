@@ -80,6 +80,7 @@ export const projects: Project[] = [
     },
     stack: ['Swift', 'SwiftUI', 'AppKit', 'AVFoundation', 'EventKit'],
     repo: 'https://github.com/GooseyGustav/FatCatPomodoro',
+    live: 'https://asifthatworks.com/fatcatpomodoro',
   },
   {
     slug: 'plp-gruppe',
