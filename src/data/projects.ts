@@ -245,8 +245,8 @@ export const projects: Project[] = [
   {
     slug: 'used-car-ml',
     kind: 'study',
-    title: 'DE Used Autos',
-    period: '2025',
+    title: 'Germany Used Auto Market Analysis',
+    period: '2024',
     team: 4,
     label: { en: 'Data science & machine learning', de: 'Data Science & Machine Learning' },
     role: { en: 'Co-developer, research & ML', de: 'Co-Entwickler, Recherche & ML' },
