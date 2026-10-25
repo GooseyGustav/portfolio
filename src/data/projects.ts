@@ -50,7 +50,6 @@ export const projects: Project[] = [
       ],
     },
     stack: ['Node.js', 'Express', 'LangGraph', 'OpenAI', 'MongoDB', 'Telegram', 'WhatsApp Cloud API', 'Meta Graph API', 'Google APIs', 'Stripe', 'nginx'],
-    privateRepo: true,
     live: 'https://asifthatworks.com',
   },
   {
