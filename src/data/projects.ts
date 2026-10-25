@@ -112,7 +112,7 @@ export const projects: Project[] = [
     slug: 'gmbh-boerse',
     kind: 'work',
     title: 'gmbh-boerse.com',
-    period: '2025',
+    period: '2026',
     label: { en: 'Client website', de: 'Kundenprojekt' },
     role: { en: 'Design & development', de: 'Design & Entwicklung' },
     summary: {
