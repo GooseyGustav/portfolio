@@ -86,18 +86,26 @@ export const projects: Project[] = [
     slug: 'plp-gruppe',
     kind: 'work',
     title: 'plp-gruppe.de',
-    period: '2025',
+    period: '2026',
     label: { en: 'Client website', de: 'Kundenprojekt' },
-    role: { en: 'Design & development', de: 'Design & Entwicklung' },
+    role: { en: 'Web developer & server admin', de: 'Webentwickler & Server-Admin' },
     summary: {
-      en: 'Company website designed and built for a client.',
-      de: 'Unternehmenswebsite, gestaltet und umgesetzt für einen Kunden.',
+      en: 'A complete new WordPress website for a client, including the move to a new server.',
+      de: 'Eine komplett neue WordPress-Website für einen Kunden, inklusive Umzug auf einen neuen Server.',
     },
     points: {
-      en: ['Concept, design and implementation from first draft to launch.', 'Responsive layout and fast static delivery.'],
-      de: ['Konzept, Design und Umsetzung vom ersten Entwurf bis zum Launch.', 'Responsives Layout und schnelle statische Auslieferung.'],
+      en: [
+        'Built and handed over a fully working new website in WordPress.',
+        'Migrated the site and its data from one VPS to another.',
+        'Set up email and contact forms so customer requests arrive reliably.',
+      ],
+      de: [
+        'Eine voll funktionsfähige neue Website in WordPress gebaut und übergeben.',
+        'Website und Daten von einem VPS auf einen anderen umgezogen.',
+        'E-Mail- und Kontaktformulare eingerichtet, damit Kundenanfragen zuverlässig ankommen.',
+      ],
     },
-    stack: ['HTML', 'CSS', 'JavaScript'],
+    stack: ['WordPress', 'PHP', 'VPS migration', 'Linux', 'Contact forms'],
     live: 'https://plp-gruppe.de',
   },
   {
