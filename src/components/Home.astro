@@ -6,6 +6,9 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
 const work = projects.filter((p) => p.kind === 'work');
+// A lone card in the last row would leave a hole, so it spans the full width instead
+const isBig = (p: (typeof work)[number]) => p.featured && p.slug === 'jarvi';
+const oddLast = work.filter((p) => !isBig(p)).length % 2 === 1;
 const study = projects.filter((p) => p.kind === 'study');
 const skills = ['Java', 'Python', 'JavaScript', 'Node.js', 'Swift', 'MongoDB', 'SQLite', 'Linux', 'AWS', 'LLM agents', 'TCP / Networking'];
 ---
@@ -20,8 +23,8 @@ const skills = ['Java', 'Python', 'JavaScript', 'Node.js', 'Swift', 'MongoDB', '
   <div class="wrap">
     <div class="sechead"><h2>{t.work}</h2><span class="label">{t.workHint}</span></div>
     <div class="work">
-      {work.map((p) => (
-        <a class={`card${p.featured && p.slug === 'jarvi' ? ' big' : ''}`} href={`/${lang}/projects/${p.slug}/`} transition:name={`card-${p.slug}`}>
+      {work.map((p, i) => (
+        <a class={`card${isBig(p) || (oddLast && i === work.length - 1) ? ' big' : ''}`} href={`/${lang}/projects/${p.slug}/`} transition:name={`card-${p.slug}`}>
           <div class="meta"><span class="label">{p.label[lang]} · {p.period}</span><span class="open">{t.open} →</span></div>
           <div><h3 transition:name={`title-${p.slug}`}>{p.title}</h3><p>{p.summary[lang]}</p></div>
         </a>
