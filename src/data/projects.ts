@@ -109,9 +109,9 @@ export const projects: Project[] = [
     live: 'https://plp-gruppe.de',
   },
   {
-    slug: 'boerse-gmbh',
+    slug: 'gmbh-boerse',
     kind: 'work',
-    title: 'boerse-gmbh.net',
+    title: 'gmbh-boerse.com',
     period: '2025',
     label: { en: 'Client website', de: 'Kundenprojekt' },
     role: { en: 'Design & development', de: 'Design & Entwicklung' },
@@ -124,7 +124,7 @@ export const projects: Project[] = [
       de: ['Konzept, Design und Umsetzung vom ersten Entwurf bis zum Launch.', 'Responsives Layout und schnelle statische Auslieferung.'],
     },
     stack: ['HTML', 'CSS', 'JavaScript'],
-    live: 'https://boerse-gmbh.net',
+    live: 'https://gmbh-boerse.com',
   },
   {
     slug: 'linux-vms',
