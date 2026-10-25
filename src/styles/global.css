@@ -78,6 +78,7 @@ a.step:hover h3 { color: var(--accent); }
 footer { padding-block: 72px 120px; border-top: 1px solid var(--line); }
 footer h2 { font-size: clamp(32px, 6vw, 72px); letter-spacing: -.03em; margin-top: 12px; }
 footer p { color: var(--muted); max-width: 60ch; }
+footer p .line { display: block; }
 .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .btn { font-family: var(--mono); font-size: 13px; text-decoration: none; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }

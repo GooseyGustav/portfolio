@@ -54,7 +54,7 @@ const skills = ['Java', 'Python', 'JavaScript', 'Node.js', 'Swift', 'MongoDB', '
   <div class="wrap">
     <span class="label">{t.nav.contact}</span>
     <h2>{t.contactTitle[0]}<br />{t.contactTitle[1]}</h2>
-    <p>{t.contactText}</p>
+    <p>{t.contactText.map((line) => <span class="line">{line}</span>)}</p>
     <div class="links">
       <a class="btn primary" href="https://github.com/GooseyGustav">github.com/GooseyGustav</a>
       <a class="btn" href="https://asifthatworks.com">asifthatworks.com</a>
