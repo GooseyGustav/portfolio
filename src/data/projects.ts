@@ -192,6 +192,25 @@ export const projects: Project[] = [
     repo: 'https://github.com/GooseyGustav/ClarityHub',
   },
   {
+    slug: 'used-car-ml',
+    kind: 'study',
+    title: 'Germany Used Auto Market Analysis',
+    period: '2024',
+    team: 4,
+    label: { en: 'Data science & machine learning', de: 'Data Science & Machine Learning' },
+    role: { en: 'Co-developer, research & ML', de: 'Co-Entwickler, Recherche & ML' },
+    summary: {
+      en: 'A case study of the German used-car market with a machine-learning price prediction model.',
+      de: 'Eine Fallstudie zum deutschen Gebrauchtwagenmarkt mit einem Machine-Learning-Modell zur Preisvorhersage.',
+    },
+    points: {
+      en: ['Exploratory data analysis on real-world listings.', 'Compared several ML algorithms for price prediction.', 'Mostly research, then implementation, in a team of four.'],
+      de: ['Explorative Datenanalyse auf echten Inseraten.', 'Mehrere ML-Algorithmen zur Preisvorhersage verglichen.', 'Vor allem Recherche, dann Umsetzung, im Viererteam.'],
+    },
+    stack: ['Python', 'Jupyter', 'pandas', 'scikit-learn'],
+    repo: 'https://github.com/Abodx9/DE_Used_Autos',
+  },
+  {
     slug: 'environment-spa',
     kind: 'study',
     title: 'BeKys-AEP Web App',
@@ -241,25 +260,6 @@ export const projects: Project[] = [
     },
     stack: ['Java', 'JUnit', 'Mockito', 'Concurrency', 'MVC'],
     repo: 'https://github.com/GooseyGustav/BankProject-Semester-2025-26',
-  },
-  {
-    slug: 'used-car-ml',
-    kind: 'study',
-    title: 'Germany Used Auto Market Analysis',
-    period: '2024',
-    team: 4,
-    label: { en: 'Data science & machine learning', de: 'Data Science & Machine Learning' },
-    role: { en: 'Co-developer, research & ML', de: 'Co-Entwickler, Recherche & ML' },
-    summary: {
-      en: 'A case study of the German used-car market with a machine-learning price prediction model.',
-      de: 'Eine Fallstudie zum deutschen Gebrauchtwagenmarkt mit einem Machine-Learning-Modell zur Preisvorhersage.',
-    },
-    points: {
-      en: ['Exploratory data analysis on real-world listings.', 'Compared several ML algorithms for price prediction.', 'Mostly research, then implementation, in a team of four.'],
-      de: ['Explorative Datenanalyse auf echten Inseraten.', 'Mehrere ML-Algorithmen zur Preisvorhersage verglichen.', 'Vor allem Recherche, dann Umsetzung, im Viererteam.'],
-    },
-    stack: ['Python', 'Jupyter', 'pandas', 'scikit-learn'],
-    repo: 'https://github.com/Abodx9/DE_Used_Autos',
   },
   {
     slug: 'supersuperhirn',
